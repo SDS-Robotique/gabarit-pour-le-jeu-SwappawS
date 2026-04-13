@@ -9,6 +9,7 @@ class Titre extends Phaser.Scene {
     }
     
     preload(){
+        this.load.image('forest', 'assets/images/forest_background.png');
     }
     
     create(data){

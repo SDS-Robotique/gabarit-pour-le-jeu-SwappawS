@@ -8,8 +8,8 @@ const game_scene = new Game();
 
 var config = {
     type: Phaser.AUTO,
-    width: 800,
-    height: 600,
+    width: 960,
+    height: 540,
     physics: {
         default: 'arcade',
         arcade: {
