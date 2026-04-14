@@ -1,4 +1,4 @@
-import Titre from "./titre";
+import Titre from "/titre.js";
 
 class Intro extends Phaser.Scene {
     constructor(){
@@ -12,13 +12,14 @@ class Intro extends Phaser.Scene {
     }
     
     preload(){
-    this.load.image('logo', 'assets/images/goofycatstudio.png');
+    this.load.image('rigby', 'assets/images/goofycatstudio.png');
    
     }
     
     create(data){
-    logo = this.add.image(300,250 , 'logo');
-    logo.setOrigin( 300, 400);
+    logo = this.add.image(400,250 ,'rigby');
+    logo.setOrigin( 400, 250);
+    logo.setScale(5);
     
     }
     
