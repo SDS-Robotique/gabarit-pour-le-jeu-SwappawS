@@ -1,5 +1,4 @@
-import { LOG_VERSION } from "phaser";
-
+import Titre from "./titre";
 
 class Intro extends Phaser.Scene {
     constructor(){
@@ -13,17 +12,20 @@ class Intro extends Phaser.Scene {
     }
     
     preload(){
-       logo = this.load.image('logo', 'asstes/images/goofycatstudio.png');
+    this.load.image('logo', 'assets/images/goofycatstudio.png');
    
     }
     
     create(data){
-    logo = this.add.image(0,0 , 'logo');
-    logo.setOrigin(0 , 0);
+    logo = this.add.image(300,250 , 'logo');
+    logo.setOrigin( 300, 400);
     
     }
     
     update(time, delta){
+        if(time<5000){
+            this.scene.switch('titre_scene');
+        }
    
     }
     
