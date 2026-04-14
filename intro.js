@@ -4,20 +4,22 @@ import { LOG_VERSION } from "phaser";
 class Intro extends Phaser.Scene {
     constructor(){
         super({key : 'intro_scene'})
-        
+         
     }
-    
+
+
     init(data){
+        var logo; 
     }
     
     preload(){
-        this.load.image('logo', 'assets/images/goofycatstudio.png');
-
+       logo = this.load.image('logo', 'asstes/images/goofycatstudio.png');
    
     }
     
     create(data){
-      this.add.image(440,330,'logo');
+    logo = this.add.image(0,0 , 'logo');
+    logo.setOrigin(0 , 0);
     
     }
     
