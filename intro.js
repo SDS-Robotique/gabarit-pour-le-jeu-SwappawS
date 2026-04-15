@@ -28,7 +28,7 @@ class Intro extends Phaser.Scene {
         if(time>10000){
             this.scene.switch('titre_scene');
         }
-   
+        
     }
     
 }
