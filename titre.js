@@ -10,13 +10,13 @@ class Titre extends Phaser.Scene {
     }
     
     preload(){
-        this.load.image('forest', 'assets/images/forest_background.png');
+        this.load.image('forest', 'assets/images/titlescreen.png');
 
     }
     
     create(data){
-        bg = this.add.image(0, 0, 'forest');
-             bg.setOrigin(0,0);
+        bg = this.add.image(480, 270, 'forest');
+             bg.setOrigin(480,270);
     }
     
     update(time, delta){

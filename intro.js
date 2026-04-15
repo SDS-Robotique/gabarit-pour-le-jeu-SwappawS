@@ -3,28 +3,29 @@ import Titre from "/titre.js";
 class Intro extends Phaser.Scene {
     constructor(){
         super({key : 'intro_scene'})
-         
+         var logo; 
     }
 
 
     init(data){
-        var logo; 
+    
     }
     
     preload(){
-    this.load.image('rigby', 'assets/images/goofycatstudio.png');
+    this.load.image('logo', 'assets/images/goofycatstudio.png');
    
     }
     
     create(data){
-    logo = this.add.image(400,250 ,'rigby');
-    logo.setOrigin( 400, 250);
+       var logo; 
+    logo = this.add.image(480,270 ,'logo');
+    logo.setOrigin( 480, 270);
     logo.setScale(5);
     
     }
     
     update(time, delta){
-        if(time<5000){
+        if(time>10000){
             this.scene.switch('titre_scene');
         }
    
