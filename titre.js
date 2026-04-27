@@ -10,11 +10,11 @@ class Titre extends Phaser.Scene {
     }
     
     preload(){
-        this.load.image('forest', 'assets/images/titlescreen.png');
+        this.load.image('titlescreen', 'assets/images/titlescreen.png');
     }
     
     create(data){
-        bg = this.add.image(0, 0, 'forest');
+        bg = this.add.image(0, 0, 'titlescreen');
         bg.setOrigin(0,0);
         keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
     }
