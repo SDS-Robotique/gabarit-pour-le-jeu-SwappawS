@@ -4,6 +4,7 @@ var score;
 var enemy;
 var bg;
 var inv;
+var KeyW;
 
 class Game extends Phaser.Scene {    
     constructor(){
@@ -32,7 +33,7 @@ class Game extends Phaser.Scene {
     player.setCollideWorldBounds(true);
     player.setScale(1);
     player.body.setSize(58,34);
-    this.physics.add.collider(player, platforms);
+    KeyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
     
     
     this.score = 0;
@@ -40,6 +41,9 @@ class Game extends Phaser.Scene {
     }
     
     update(time, delta){
+        if(KeyW.isDown){
+            player.setVelocityY(-240);
+        }
      }
      
 
