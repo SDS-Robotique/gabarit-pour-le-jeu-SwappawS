@@ -8,6 +8,7 @@ var KeyW;
 var KeyA;
 var KeyD;
 var platforms;
+var sol;
 
 
 class Game extends Phaser.Scene {    
@@ -25,6 +26,7 @@ class Game extends Phaser.Scene {
     this.load.image('forest', 'assets/images/forest_background.png');
     this.load.spritesheet('SlimeV', ' assets/sprites/slime1.png', { frameWidth: 192, frameHeight: 192 });
     this.load.spritesheet('platform', 'assets/sprites/platform.png', {frameWidth:63, frameHeight:18});
+    this.load.spritesheet('sol', 'assets/sprites/sol.png', {frameWidth:339, frameHeight:173}) ; 
     }
     
     create(data){
@@ -35,7 +37,11 @@ class Game extends Phaser.Scene {
     
     player = this.physics.add.sprite(480, 270, 'SlimeV');
     platforms= this.add.sprite(100,270, 'platform');
+    sol= this.add.sprite(470, 790, 'sol');
+    sol.setScale(3);
     this.physics.add.collider(player, platforms);
+
+    this.physics.add.collider(player, sol);
     
     player.setBounce(0.5);
     player.setCollideWorldBounds(true);
@@ -49,8 +55,8 @@ class Game extends Phaser.Scene {
     }
     
     update(time, delta){
-        console.log(player.body.touching.down);
-        if(KeyW.isDown && player.body.touching.down){
+        console.log(player.body.onFloor());
+        if(KeyW.isDown && player.body.onFloor()){
             player.setVelocityY(-240);
         }
             if (KeyA.isDown) {
