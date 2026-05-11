@@ -1,7 +1,7 @@
 var pdv;
 var player;
 var score;
-var enemy;
+var ennemy;
 var bg;
 var inv;
 var KeyW;
@@ -27,7 +27,8 @@ class Game extends Phaser.Scene {
     this.load.spritesheet('SlimeV', ' assets/sprites/slime1.png', { frameWidth: 192, frameHeight: 192 });
     this.load.spritesheet('platform', 'assets/sprites/platform.png', {frameWidth:63, frameHeight:18});
     this.load.spritesheet('sol', 'assets/sprites/sol.png', {frameWidth:339, frameHeight:173}) ; 
-    }
+    this.load.spritesheet('ennemyf', 'assets/sprites/skeletef.png', {frameWidth:16, frameHeight:64});
+}
     
     create(data){
     bg = this.add.image(0,0,'forest');
@@ -42,6 +43,14 @@ class Game extends Phaser.Scene {
     this.physics.add.collider(player, platforms);
 
     this.physics.add.collider(player, sol);
+    ennemy=this.physics.add.sprite(100,200, 'ennemyf');
+    this.anims.create({
+        key: 'idle_enemy',
+        frames: this.anims.generateFrameNumbers('ennemyf', { start: 0, end: 3 }),
+        frameRate: 10,
+        repeat: -1
+    });
+
     
     player.setBounce(0.5);
     player.setCollideWorldBounds(true);
@@ -68,6 +77,7 @@ class Game extends Phaser.Scene {
             else{
                 player.setVelocityX(0);
             }
+        player.anims.play('idle_enemy', true);
      }
 
     }
