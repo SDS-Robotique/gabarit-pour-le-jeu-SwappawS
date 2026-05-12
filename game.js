@@ -27,7 +27,7 @@ class Game extends Phaser.Scene {
     this.load.spritesheet('SlimeV', ' assets/sprites/slime1.png', { frameWidth: 192, frameHeight: 192 });
     this.load.spritesheet('platform', 'assets/sprites/platform.png', {frameWidth:63, frameHeight:18});
     this.load.spritesheet('sol', 'assets/sprites/sol.png', {frameWidth:339, frameHeight:173}) ; 
-    this.load.spritesheet('ennemyf', 'assets/sprites/skeletef.png', {frameWidth:16, frameHeight:64});
+    this.load.spritesheet('crane', 'assets/sprites/crane.png', {frameWidth:225, frameHeight:225 });
 }
     
     create(data){
@@ -43,10 +43,10 @@ class Game extends Phaser.Scene {
     this.physics.add.collider(player, platforms);
 
     this.physics.add.collider(player, sol);
-    ennemy=this.physics.add.sprite(100,200, 'ennemyf');
+    ennemy=this.physics.add.sprite(100,200, 'crane');
     this.anims.create({
-        key: 'idle_enemy',
-        frames: this.anims.generateFrameNumbers('ennemyf', { start: 0, end: 3 }),
+        key: 'idle_crane',
+        frames: this.anims.generateFrameNumbers('crane', { start: 0, end: 0 }),
         frameRate: 10,
         repeat: -1
     });
