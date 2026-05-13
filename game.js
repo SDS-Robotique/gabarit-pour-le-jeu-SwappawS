@@ -55,7 +55,9 @@ class Game extends Phaser.Scene {
     player.setScale(1);
     player.body.setSize(58,34);
     ennemy.setCollideWorldBounds(true);
-    ennemyGroup= this.physics.add.group();
+    this.ennemy = this.physics.add.group();
+    
+
     ennemy.setBounce(0.5);
     KeyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
     KeyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
@@ -78,7 +80,13 @@ class Game extends Phaser.Scene {
             else{
                 player.setVelocityX(0);
             }
-       
+       function spawnEnnemy(){
+       this.time.addEvent({
+        delay: 5000,                
+        callback: spawnEnnemy,             
+        loop: true                  
+    });
+}
       }
     }
 
