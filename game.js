@@ -9,7 +9,7 @@ var KeyA;
 var KeyD;
 var platforms;
 var sol;
-
+var ennemyGroup;
 
 class Game extends Phaser.Scene {    
     constructor(){
@@ -41,21 +41,22 @@ class Game extends Phaser.Scene {
     sol= this.add.sprite(470, 790, 'sol');
     sol.setScale(3);
     this.physics.add.collider(player, platforms);
-
     this.physics.add.collider(player, sol);
+    
     ennemy=this.physics.add.sprite(100,200, 'crane');
-    this.anims.create({
-        key: 'idle_crane',
-        frames: this.anims.generateFrameNumbers('crane', { start: 0, end: 0 }),
-        frameRate: 10,
-        repeat: -1
-    });
+    ennemy.setScale(0.2);
+    this.physics.add.collider(ennemy, platforms);
+    this.physics.add.collider(ennemy, sol);
 
     
     player.setBounce(0.5);
     player.setCollideWorldBounds(true);
+    
     player.setScale(1);
     player.body.setSize(58,34);
+    ennemy.setCollideWorldBounds(true);
+    ennemyGroup= this.physics.add.group();
+    ennemy.setBounce(0.5);
     KeyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
     KeyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
     KeyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
@@ -77,9 +78,8 @@ class Game extends Phaser.Scene {
             else{
                 player.setVelocityX(0);
             }
-        player.anims.play('idle_enemy', true);
-     }
-
+       
+      }
     }
 
 export default Game
