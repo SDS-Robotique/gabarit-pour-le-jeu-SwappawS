@@ -1,1 +1,3 @@
-rien pour l'instant :)
+
+
+in phaser 3, how to spawn an enemy each 5 seconds ?
