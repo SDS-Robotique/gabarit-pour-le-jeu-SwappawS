@@ -1,4 +1,3 @@
-import { Create } from "phaser";
 
 var pdv;
 var player;
@@ -35,31 +34,32 @@ class Game extends Phaser.Scene {
 }
     
     create(data){
-    bg = this.add.image(0,0,'forest')
-    bg.setScale(2)
-    bg.setOrigin(0, 0)
+    bg = this.add.image(0,0,'forest');
+    bg.setScale(2);
+    bg.setOrigin(0, 0);
     
     
-    player = this.physics.add.sprite(480, 270, 'SlimeV')
-    platforms= this.add.sprite(100,270, 'platform')
-    sol= this.add.sprite(470, 790, 'sol')
+    player = this.physics.add.sprite(480, 270, 'SlimeV');
+    platforms= this.add.sprite(100,270, 'platform');
+    sol= this.add.sprite(470, 790, 'sol');
     sol.setScale(3);
-    this.physics.add.collider(player, platforms)
-    this.physics.add.collider(player, sol)
+    this.physics.add.collider(player, platforms);
+    this.physics.add.collider(player, sol);
     
-    ennemy=this.physics.add.sprite(100,200, 'crane')
-    ennemy.setScale(0.2)
-    this.physics.add.collider(ennemy, platforms)
-    this.physics.add.collider(ennemy, sol)
+    ennemy = this.physics.add.sprite(100,200, 'crane');
+    this.ennemyGroup = this.physics.add.group(ennemy);
+    ennemy.setScale(0.2);
+    this.physics.add.collider(ennemy, platforms);
+    this.physics.add.collider(ennemy, sol);
 
     
-    player.setBounce(0.5)
-    player.setCollideWorldBounds(true)
+    player.setBounce(0.5);
+    player.setCollideWorldBounds(true);
     
-    player.setScale(1)
-    player.body.setSize(58,34)
-    ennemy.setCollideWorldBounds(true)
-    ennemyGroup = this.physics.add.group()
+    player.setScale(1);
+    player.body.setSize(58,34);
+    ennemy.setCollideWorldBounds(true);
+    ennemyGroup = this.physics.add.group();
     
     this.ennemyGroup.children.each(function(item){
         this.time.addEvent()
@@ -105,11 +105,13 @@ class Game extends Phaser.Scene {
 }
       }
     
-spawnEnnemy()
+function spawnEnnemy()
 {
     if(time>3000)
-    spawnEnnemy == true
+
+    spawnEnnemy == true //rappel pour faire apparaitre ennemy
     ennemyGroup.add(ennemy)
+
 }
 
 export default Game
