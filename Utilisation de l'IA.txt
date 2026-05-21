@@ -1,3 +1,5 @@
 
 
 in phaser 3, how to spawn an enemy each 3 seconds ?
+
+Uncaught TypeError: this.physics.ennemyGroup is not a function (dans la barre de recherche google mais avec ai overview d'activer)
