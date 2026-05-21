@@ -1,5 +1,15 @@
 
 
-in phaser 3, how to spawn an enemy each 3 seconds ?
+le prompt: how do I make the ennemy spawn every 5 seconds ?
+spawnEnnemy() {
+    const enemy = this.ennemyGroup.create(100, 200, 'crane');
+    enemy.setScale(0.2);
+    enemy.setBounce(0.5);
+    enemy.setCollideWorldBounds(true);
 
-Uncaught TypeError: this.physics.ennemyGroup is not a function (dans la barre de recherche google mais avec ai overview d'activer)
+    this.physics.add.collider(enemy, platforms);
+    this.physics.add.collider(enemy, sol);
+}
+Raison: Cela fesait maintenant plus de 24h que j'étais bloqué et je ne pouvais pas progresser sinon, ce fut de dernier recours que j'ai demandé a copilot directement.
+
+

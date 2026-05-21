@@ -59,33 +59,29 @@ class Game extends Phaser.Scene {
     player.setScale(1);
     player.body.setSize(58,34);
     ennemy.setCollideWorldBounds(true);
-    ennemyGroup = this.physics.add.group();
-    
-    this.ennemyGroup.children.each(function(item){
-        this.time.addEvent()
-        {
-            item.create()
-            {
-    delay; 3000, 
-    callback; this.spawnEnnemy, 
-    callbackScope; this,
-    loop; true
-    }
-   }
    
-        
-    })
+   
+    this.ennemyGroup = this.physics.add.group();
 
-
-    ennemy.setBounce(0.5);
-    KeyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W)
-    KeyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A)
-    KeyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D)
-    this.score = 0
-
-}
+    this.time.addEvent({
+        delay: 5000,
+        callback: this.spawnEnnemy,
+        callbackScope: this,
+        loop: true
+    });
+}}
     
-    update(time, delta){
+
+    
+    
+    KeyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
+    KeyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
+    KeyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
+    
+
+
+    
+    update(time, delta);{
         console.log(player.body.onFloor())
         if(KeyW.isDown && player.body.onFloor()){
             player.setVelocityY(-240)
@@ -103,15 +99,17 @@ class Game extends Phaser.Scene {
 
         
 }
-      }
+
+      
     
-function spawnEnnemy()
-{
-    if(time>3000)
+function spawnEnnemy(){
+    const enemy = this.ennemyGroup.create(100, 200, 'crane');
+    enemy.setScale(0.2);
+    enemy.setBounce(0.5);
+    enemy.setCollideWorldBounds(true);
 
-    spawnEnnemy == true //rappel pour faire apparaitre ennemy
-    ennemyGroup.add(ennemy)
-
+    this.physics.add.collider(enemy, platforms);
+    this.physics.add.collider(enemy, sol);
 }
 
 export default Game
