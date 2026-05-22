@@ -74,7 +74,7 @@ create(data){
     KeyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
     KeyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
     KeyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
-    
+    keySpace = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
 
 
     
@@ -99,12 +99,21 @@ update(time, delta){
         else{
             player.setVelocityX(0)
          }
-          keySpace = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
+          if (keySpace.isDown) {
+            this.spawnShooty();
+        }
+
     }
 
 spawnShooty(){
-    const shooty = this.physics.add.sprite(x,y,'shooty');
-}
+    const shooty = this.physics.add.sprite(player.x, player.y, 'shooty');
+    shooty.setVelocityY(-400);
+    shooty.setScale(4);
+    shooty.body.setSize(8, 8);
+    if (shooty.y < 0){
+        shooty.destroy();
+    }
+    }
 
  spawnEnnemy(){
     const enemy = this.ennemyGroup.create(100, 500, 'crane');
