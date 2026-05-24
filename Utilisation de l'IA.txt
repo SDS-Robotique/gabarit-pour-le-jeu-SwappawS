@@ -22,20 +22,4 @@ spawnEnnemy() {
 Raison: Cela fesait maintenant plus de 24h que j'étais bloqué et je ne pouvais pas progresser sinon, ce fut de dernier recours que j'ai demandé a copilot directement.
 
 
-J'ai aussi utilisé la fonctionalité qui prévoit le code  écrire pour grandement accélérer la creation des spawnFireball
-spawnFireballMedium(){
-        const fireball = this.physics.add.sprite(randomX, -20, 'fireball');
-        fireball.setVelocityY(200);
-         const randomX = Phaser.Math.Between(0, this.scale.width);}
 
-spawnFireballFast(){
-        const fireball = this.physics.add.sprite(randomX, -20, 'fireball');
-        fireball.setVelocityY(300);
-         const randomX = Phaser.Math.Between(0, this.scale.width);}
-
-spawnFireballVeryFast(){
-        const fireball = this.physics.add.sprite(randomX, -20, 'fireball');
-        fireball.setVelocityY(400);
-         const randomX = Phaser.Math.Between(0, this.scale.width);}
-
-Raison:ça sauvas pas mal de temps car s'était juste copier le même code mais la vitesse est plus rapide
