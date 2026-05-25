@@ -53,11 +53,13 @@ create(data){
     player.setCollideWorldBounds(true);
     player.setScale(1);
     player.body.setSize(58,34);
+    this.physics.add.collider(player, fireballGroup);
+    
    
     this.shootyGroup = this.physics.add.group();
     this.enemyGroup = this.physics.add.group();
     this.fireballGroup = this.physics.add.group();
-
+    
     this.time.addEvent({
         delay: 1000,
         callback: this.spawnEnemy,
@@ -66,7 +68,7 @@ create(data){
     });
 
     this.time.addEvent({
-        delay: 250,
+        delay: 150,
         callback: this.spawnFireballSlow,
         callbackScope: this,
         loop: true
@@ -92,24 +94,33 @@ scoreText = this.add.text(16, 16, 'Score: 0', {
         enemyCollide.destroy();
         score += 1;
         scoreText.setText('Score: ' + score);
-        pdv += -1;
-        pdvText.setText('PDV: ' + pdv);
+        
     }.bind(this));
         
+this.fireballGroup = this.physics.add.group();
+
+this.physics.add.collider(fireball, player, function(fireballGroup, player){
+    
+    fireball.destroy();
+    pdv -= 1;
+    pdvText.setText('PDV: ' + pdv);
+    if (pdv <= 0) this.scene.start('gameover_scene', {score});
+}, null, this);
+
 
 }
 
     
 update(time, delta){
-    console.log(player.body.onFloor());
+    
     if(KeyW.isDown && player.body.onFloor()){
         player.setVelocityY(-300)
     }
         if (KeyA.isDown) {
-            player.setVelocityX(-150)
+            player.setVelocityX(-250)
         } 
         else if (KeyD.isDown){
-            player.setVelocityX(150)
+            player.setVelocityX(250)
         }
         else{
             player.setVelocityX(0)
@@ -139,6 +150,7 @@ spawnShooty(){
 spawnFireballSlow(){
         const randomX = Phaser.Math.Between(10,950 );
         const fireball = this.physics.add.sprite(randomX, -20, 'fireball');
+        this.fireballGroup.add(fireball);
         fireball.setVelocityY(300);
         fireball.setScale(1.5);
         fireball.body.allowGravity = false;

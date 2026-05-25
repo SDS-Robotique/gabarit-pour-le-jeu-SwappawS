@@ -2,11 +2,13 @@ import Intro from './intro.js'
 import Titre from './titre.js'
 import Game from './game.js'
 import About from './about.js'
+import GameOver from './gameover.js';
 
 const intro_scene = new Intro();
 const titre_scene = new Titre();
 const game_scene = new Game();
 const about_scene = new About();
+const game_over_scene = new GameOver();
 
 var config = {
     type: Phaser.AUTO,
@@ -27,5 +29,5 @@ game.scene.add('intro_scene', intro_scene);
 game.scene.add('titre_scene', titre_scene);
 game.scene.add('game_scene', game_scene);
 game.scene.add('about_scene', about_scene);
-
+game.scene.add('game_over_scene', game_over_scene);
 game.scene.start('intro_scene');

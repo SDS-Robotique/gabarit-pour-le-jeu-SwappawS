@@ -11,7 +11,7 @@ this.time.addEvent({
 
 Why is this code wrong (je ne plaisante pas, j'ai vraiment demander ça)
 spawnEnnemy() {
-    const enemy = this.ennemyGroup.create(100, 200, 'crane');
+    const enemy = this.ennemyGroup.create(100, 200, 'crane'); // c'est cette parti qui à été modifiée
     enemy.setScale(0.2);
     enemy.setBounce(0.5);
     enemy.setCollideWorldBounds(true);
@@ -21,5 +21,11 @@ spawnEnnemy() {
 }
 Raison: Cela fesait maintenant plus de 24h que j'étais bloqué et je ne pouvais pas progresser sinon, ce fut de dernier recours que j'ai demandé a copilot directement.
 
+why doesn't my player lose hp when he collide with a fireball ?
+this.fireballGroup.add(fireball);
+raison: je n'arrivais pas à trouver pourquoi à ce moment, mais en y repensant, c'était un peu évident
 
 
+why does it crash the game when the player touches the fireball ?
+this.physics.add.collider(fireballGroup, player, function(fireball, player){
+ raison: je n'arrivais pas à trouver l'erreur qui causait mon jeux à crash
