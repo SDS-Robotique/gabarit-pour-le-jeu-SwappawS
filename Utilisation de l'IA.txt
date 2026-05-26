@@ -29,3 +29,16 @@ raison: je n'arrivais pas à trouver pourquoi à ce moment, mais en y repensant,
 why does it crash the game when the player touches the fireball ?
 this.physics.add.collider(fireballGroup, player, function(fireball, player){
  raison: je n'arrivais pas à trouver l'erreur qui causait mon jeux à crash
+
+
+The colliding doesn't seem to register between the player and the fireball, or rather, the game doesn't end when they collide,  how can it be fixed ?
+if (dead && !gameOverShown) {
+            this.time.removeAllEvents();
+            this.physics.pause();
+            bg2 = this.add.image(0, 0, 'blackbg').setOrigin(0, 0);
+            bg2.setDisplaySize(960, 540);
+            this.add.text(360, 200, 'Game Over', { fontSize: '54px', fill: '#ffffff' });
+            this.add.text(420, 280, 'Score: ' + score, { fontSize: '36px', fill: '#ffffff' });
+            gameOverShown = true;
+        }
+Raison: Cela faisait plusieurs heures que je cherchais des solutions aux problèmes et le temps filait, cela est une solution de style scotch tape temporaire qui va être devoir retravailler
