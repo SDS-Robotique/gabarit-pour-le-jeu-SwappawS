@@ -1,5 +1,5 @@
 var bg;
-var keyS;
+var keyU;
 var keyA;
 
 
@@ -18,12 +18,11 @@ class About extends Phaser.Scene {
     create(data){
     bg = this.add.image(0, 0, 'about');
     bg.setOrigin(0,0);
-    KeyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
+    keyU = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.U);
     }
-    
     update(time, delta){
-        if (keyS.isDown) {
-            this.scene.start('intro_scene');
+        if (Phaser.Input.Keyboard.JustDown(keyU)) {
+            this.scene.switch('titre_scene');
         }
     }
     

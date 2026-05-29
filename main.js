@@ -30,4 +30,4 @@ game.scene.add('titre_scene', titre_scene);
 game.scene.add('game_scene', game_scene);
 game.scene.add('about_scene', about_scene);
 
-game.scene.start('intro_scene');
+game.scene.start('titre_scene');
