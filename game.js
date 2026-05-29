@@ -11,6 +11,7 @@ var inv;
 var KeyW;
 var KeyA;
 var KeyD;
+var KeyR;
 var sol;
 var enemyGroup;
 var keySpace;
@@ -58,7 +59,7 @@ create(data){
     this.physics.add.collider(player, sol);
     player.setCollideWorldBounds(true);
     player.setScale(1);
-    player.body.setSize(58,34);
+    player.body.setSize(54,30);
     
     
 
@@ -81,6 +82,7 @@ create(data){
     KeyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
     KeyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
     KeyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
+    KeyR = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.R);
     keySpace = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
 
     scoreText = this.add.text(16, 16, 'Score: 0', { 
@@ -114,9 +116,14 @@ update(time, delta){
             this.physics.pause();
             bg2 = this.add.image(0, 0, 'blackbg').setOrigin(0, 0);
             bg2.setDisplaySize(960, 540);
-            this.add.text(360, 200, 'Game Over', { fontSize: '54px', fill: '#ffffff' });
-            this.add.text(420, 280, 'Score: ' + score, { fontSize: '36px', fill: '#ffffff' });
+            this.add.text(360, 200, 'Game Over', { fontSize: '54px', fill: '#3cff00' });
+            this.add.text(420, 280, 'Score: ' + score, { fontSize: '36px', fill: '#ac0000' });
             gameOverShown = true;
+             if (KeyR.isDown) {
+                this.events.removeAll();
+                this.scene.restart();
+            }
+            
         }
         return;
     }
@@ -135,7 +142,9 @@ update(time, delta){
     if (Phaser.Input.Keyboard.JustDown(keySpace)){
         this.spawnShooty();
     }
-
+    if (KeyR.isDown ) {
+        this.scene.restart();
+    }
 }
 spawnShooty(){
     const shooty = this.physics.add.sprite(player.x, player.y, 'shooty');
@@ -156,6 +165,7 @@ spawnFireballSlow(){
         fireballGroup.add(fireball);
         fireball.setVelocityY(300);
         fireball.setScale(1.5);
+        fireball.setSize(20, 20);
         fireball.body.allowGravity = false;
         if (fireball.y > 540) {
             fireball.destroy();
