@@ -22,8 +22,8 @@ class Titre extends Phaser.Scene {
     }
     
     update(time, delta){
-        if(keyS.isDown){
-            this.scene.switch('game_scene');
+        if(Phaser.Input.Keyboard.JustDown(keyS)){
+            this.scene.start('game_scene');
         }
         if(Phaser.Input.Keyboard.JustDown(keyA)){
             this.scene.switch('about_scene');

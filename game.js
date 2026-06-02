@@ -108,24 +108,26 @@ create(data){
 
     
 update(time, delta){
-    if (!player) return;
+    
 
     if (dead) {
-        if (!gameOverShown) {
+        
+        if (!gameOverShown ) {
             this.time.removeAllEvents();
             this.physics.pause();
             bg2 = this.add.image(0, 0, 'blackbg').setOrigin(0, 0);
             bg2.setDisplaySize(960, 540);
             this.add.text(360, 200, 'Game Over', { fontSize: '54px', fill: '#3cff00' });
             this.add.text(420, 280, 'Score: ' + score, { fontSize: '36px', fill: '#ac0000' });
-            gameOverShown = true;
-             if (KeyR.isDown) {
-                this.events.removeAll();
-                this.scene.restart();
-            }
-            
+            gameOverShown = true;   
+            this.scene.start();     
+        }return;
+        if (Phaser.Input.Keyboard.JustDown(KeyR)) {
+            this.time.resumeAllEvents();
+            console.log("Restarting game...");
+            this.scene.restart();
         }
-        return;
+        
     }
 
     if(KeyW.isDown && player.body.onFloor()){
@@ -142,9 +144,15 @@ update(time, delta){
     if (Phaser.Input.Keyboard.JustDown(keySpace)){
         this.spawnShooty();
     }
-    if (KeyR.isDown ) {
+    if (KeyR.isDown) {
         this.scene.restart();
     }
+    if (gameOverShown = true && Phaser.Input.Keyboard.JustDown(KeyR)) {
+        console.log("Restarting game...");
+        this.scene.restart();
+
+    }
+    
 }
 spawnShooty(){
     const shooty = this.physics.add.sprite(player.x, player.y, 'shooty');

@@ -11,7 +11,7 @@ this.time.addEvent({
 
 Why is this code wrong (je ne plaisante pas, j'ai vraiment demander ça)
 spawnEnnemy() {
-    const enemy = this.ennemyGroup.create(100, 200, 'crane'); // c'est cette parti qui à été modifiée
+    const enemy = this.ennemyGroup.create(100, 200, 'crane'); // c'est cette parti qui à été modifiée, je ne l'avais pas mis en constante
     enemy.setScale(0.2);
     enemy.setBounce(0.5);
     enemy.setCollideWorldBounds(true);
