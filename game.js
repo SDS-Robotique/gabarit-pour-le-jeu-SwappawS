@@ -26,8 +26,8 @@ class Game extends Phaser.Scene {
     }
 
     init(data){
-     
-     
+     dead = false;
+     gameOverShown = false;
     }
 
     
@@ -43,7 +43,8 @@ preload(){
 }
     
 create(data){
-    bg = this.add.image(0,0,'forest');
+   
+    bg = this.add.image(0, 0, 'forest');
     bg.setScale(2);
     bg.setOrigin(0, 0);
     score = 0;
@@ -111,23 +112,21 @@ update(time, delta){
     
 
     if (dead) {
-        
-        if (!gameOverShown ) {
+        if (!gameOverShown) {
             this.time.removeAllEvents();
             this.physics.pause();
             bg2 = this.add.image(0, 0, 'blackbg').setOrigin(0, 0);
             bg2.setDisplaySize(960, 540);
             this.add.text(360, 200, 'Game Over', { fontSize: '54px', fill: '#3cff00' });
             this.add.text(420, 280, 'Score: ' + score, { fontSize: '36px', fill: '#ac0000' });
-            gameOverShown = true;   
-            this.scene.start();     
-        }return;
+            this.add.text(320, 340, 'Press R to restart', { fontSize: '24px', fill: '#ffffff' });
+            gameOverShown = true;
+        }
+
         if (Phaser.Input.Keyboard.JustDown(KeyR)) {
-            this.time.resumeAllEvents();
-            console.log("Restarting game...");
             this.scene.restart();
         }
-        
+        return;
     }
 
     if(KeyW.isDown && player.body.onFloor()){
@@ -147,11 +146,7 @@ update(time, delta){
     if (KeyR.isDown) {
         this.scene.restart();
     }
-    if (gameOverShown = true && Phaser.Input.Keyboard.JustDown(KeyR)) {
-        console.log("Restarting game...");
-        this.scene.restart();
-
-    }
+    
     
 }
 spawnShooty(){

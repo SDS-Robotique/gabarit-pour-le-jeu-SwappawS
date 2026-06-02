@@ -1,3 +1,5 @@
+Ps: j'ai essayé d'utiliser l'ia le moins possible durant ce projet, mais il fallait tout de même faire du progrès, je préfère avoir utiliser l'ia et avoir un bon jeu que d'avoir un jeu 100% ia qui ne marche pas du tout. Également, la plupart du temps, le code donné brisait plus tard dans le processus, donc peu du code générer par ia est rester.
+
 
 
 le prompt: how do I make the ennemy spawn every 5 seconds ?
@@ -42,3 +44,9 @@ if (dead && !gameOverShown) {
             gameOverShown = true;
         }
 Raison: Cela faisait plusieurs heures que je cherchais des solutions aux problèmes et le temps filait, cela est une solution de style scotch tape temporaire qui va être devoir retravailler
+
+how do I make the game restart from the game over screen ?
+dead = false;
+gameOverShown = false; 
+dans init data et create, mais après test, seulement dans init data est nécessaire
+raison: cela faisait plusieurs heures que cela me troublait, turns out, j'avais mit les returns; dans le mauvais ordres 
