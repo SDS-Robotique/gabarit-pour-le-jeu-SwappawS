@@ -1,3 +1,2 @@
-Manière de recommender sans redémarrer
-
-avoir une difficulté qui ramp up 
+Rendre le jeu + beau
+Clean le code (ia et truc inutile, souvent les 2)

@@ -18,7 +18,8 @@ var keySpace;
 var fireballGroup;
 var shootyGroup;
 var fireball;
-
+var X;
+var myTimer;
 
 class Game extends Phaser.Scene {    
     constructor(){
@@ -43,7 +44,16 @@ preload(){
 }
     
 create(data){
-   
+   myTimer = this.time.addEvent({
+        callback: this.spawnFireballSlow, 
+        callbackScope: this,
+        loop: true,
+    });
+     
+    
+
+        
+
     bg = this.add.image(0, 0, 'forest');
     bg.setScale(2);
     bg.setOrigin(0, 0);
@@ -65,18 +75,18 @@ create(data){
     
 
     this.time.addEvent({
-        delay: 1000,
+        delay:500,
         callback: this.spawnEnemy,
         callbackScope: this,
         loop: true
     });
 
-    this.time.addEvent({
-        delay: 150,
-        callback: this.spawnFireballSlow,
-        callbackScope: this,
-        loop: true
-    });
+    
+    
+     
+       
+            
+
  
     
 
@@ -99,6 +109,7 @@ create(data){
         
     }.bind(this));
 
+    
     this.physics.add.overlap(fireballGroup, player, function(fireballSprite, playerSprite){
         fireballSprite.destroy();
         if (!dead) {
@@ -109,21 +120,35 @@ create(data){
 
     
 update(time, delta){
+    if (score < 5) {
+      myTimer.delay = 1000;
+    } else if (score >= 5 && score < 10) {
+       myTimer.delay = 650;
+    } else if (score >= 10 && score < 15) {
+        myTimer.delay = 350;
+    } else {
+        myTimer.delay = 125;
+    }  
     
+
+    
+    console.log(myTimer.delay);
 
     if (dead) {
         if (!gameOverShown) {
+            
             this.time.removeAllEvents();
             this.physics.pause();
             bg2 = this.add.image(0, 0, 'blackbg').setOrigin(0, 0);
             bg2.setDisplaySize(960, 540);
             this.add.text(360, 200, 'Game Over', { fontSize: '54px', fill: '#3cff00' });
             this.add.text(420, 280, 'Score: ' + score, { fontSize: '36px', fill: '#ac0000' });
-            this.add.text(320, 340, 'Press R to restart', { fontSize: '24px', fill: '#ffffff' });
+            this.add.text(382, 400, 'Press R to restart', { fontSize: '24px', fill: '#ffffff' });
             gameOverShown = true;
         }
 
         if (Phaser.Input.Keyboard.JustDown(KeyR)) {
+        
             this.scene.restart();
         }
         return;
@@ -144,6 +169,7 @@ update(time, delta){
         this.spawnShooty();
     }
     if (KeyR.isDown) {
+        time = 0; 
         this.scene.restart();
     }
     
@@ -196,6 +222,10 @@ spawnEnemy(){
     this.physics.add.collider(enemy, sol);
     enemy.body.allowGravity = false;
 }
+timeranges() {
+    var timeranges = this.time.now;
+    return timeranges;
+   }  
 }
 
 export default Game
