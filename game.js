@@ -18,7 +18,6 @@ var keySpace;
 var fireballGroup;
 var shootyGroup;
 var fireball;
-var X;
 var myTimer;
 
 class Game extends Phaser.Scene {    
@@ -70,7 +69,7 @@ create(data){
     this.physics.add.collider(player, sol);
     player.setCollideWorldBounds(true);
     player.setScale(1);
-    player.body.setSize(54,30);
+    player.body.setSize(50,28);
     
     
 
@@ -96,8 +95,8 @@ create(data){
     KeyR = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.R);
     keySpace = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
 
-    scoreText = this.add.text(16, 16, 'Score: 0', { 
-    fontSize: '12px', 
+    scoreText = this.add.text(16, 54, 'Score: 0', { 
+    fontSize: '24px', 
     fill: '#ffffff' 
 });
  
@@ -121,13 +120,13 @@ create(data){
     
 update(time, delta){
     if (score < 5) {
-      myTimer.delay = 1000;
+      myTimer.delay = 900;
     } else if (score >= 5 && score < 10) {
-       myTimer.delay = 650;
+       myTimer.delay = 550;
     } else if (score >= 10 && score < 15) {
-        myTimer.delay = 350;
+        myTimer.delay = 250;
     } else {
-        myTimer.delay = 125;
+        myTimer.delay = 100;
     }  
     
 
@@ -193,8 +192,8 @@ spawnFireballSlow(){
         const fireball = this.physics.add.sprite(randomX, -20, 'fireball');
         fireballGroup.add(fireball);
         fireball.setVelocityY(300);
-        fireball.setScale(1.5);
-        fireball.setSize(20, 20);
+        
+        
         fireball.body.allowGravity = false;
         if (fireball.y > 540) {
             fireball.destroy();
@@ -222,10 +221,7 @@ spawnEnemy(){
     this.physics.add.collider(enemy, sol);
     enemy.body.allowGravity = false;
 }
-timeranges() {
-    var timeranges = this.time.now;
-    return timeranges;
-   }  
+
 }
 
 export default Game

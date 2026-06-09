@@ -18,7 +18,7 @@ var config = {
         default: 'arcade',
         arcade: {
             gravity: { y: 500 },
-            debug: true
+            debug: false
         }
     }
 };
@@ -30,4 +30,4 @@ game.scene.add('titre_scene', titre_scene);
 game.scene.add('game_scene', game_scene);
 game.scene.add('about_scene', about_scene);
 
-game.scene.start('titre_scene');
+game.scene.start('intro_scene');
