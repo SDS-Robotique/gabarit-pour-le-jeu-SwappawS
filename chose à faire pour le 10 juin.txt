@@ -1,2 +1,0 @@
-Rendre le jeu + beau
-Clean le code (ia et truc inutile, souvent les 2)

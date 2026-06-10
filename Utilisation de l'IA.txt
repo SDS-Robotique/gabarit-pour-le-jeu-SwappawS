@@ -1,4 +1,4 @@
-Ps: j'ai essayé d'utiliser l'ia le moins possible durant ce projet, mais il fallait tout de même faire du progrès, je préfère avoir utiliser l'ia et avoir un bon jeu que d'avoir un jeu 100% ia qui ne marche pas du tout. Également, la plupart du temps, le code donné brisait plus tard dans le processus, donc peu du code générer par ia est rester.
+Ps: j'ai essayé d'utiliser l'ia le moins possible durant ce projet, mais il fallait tout de même faire du progrès, je préfère avoir utiliser l'ia et avoir un bon jeu que d'avoir un jeu 100% ia qui ne marche pas du tout. Également, la plupart du temps, le code donné brisait plus tard dans le processus, donc peu voir aucun code généré par ia est restant
 
 
 
